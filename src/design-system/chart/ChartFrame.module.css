@@ -1,0 +1,118 @@
+.frame {
+  margin: 0;
+  width: 100%;
+}
+
+.canvasShell {
+  position: relative;
+}
+
+.expandBtn {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius);
+  border: var(--hairline) solid var(--border-strong);
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+.canvasShell:hover .expandBtn,
+.expandBtn:focus-visible {
+  opacity: 1;
+}
+.expandBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--c-ink) 55%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+}
+
+.overlayPanel {
+  position: relative;
+  width: min(1100px, 94vw);
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--surface-raised);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-popover);
+  padding: var(--space-6);
+}
+
+.overlayHeader {
+  margin: 0 0 var(--space-5);
+  padding-right: var(--space-8);
+}
+
+.overlayCanvas {
+  width: 100%;
+}
+
+.closeBtn {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  border: var(--hairline) solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.closeBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.canvas {
+  width: 100%;
+  background: color-mix(in srgb, var(--surface) 60%, var(--surface-raised));
+  border: var(--hairline) solid var(--border-hairline);
+  border-radius: var(--radius);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  margin-top: var(--space-3);
+  font-family: var(--ff-ui);
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  line-height: var(--lh-caption);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.figure {
+  color: var(--mark);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+}

@@ -1,0 +1,125 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.embedRoot {
+  padding: var(--space-4);
+}
+
+/* ---- Masthead ---------------------------------------------------------- */
+.masthead {
+  border-bottom: var(--hairline) solid var(--border-strong);
+  background: color-mix(in srgb, var(--c-paper) 97%, transparent);
+  backdrop-filter: blur(8px) saturate(1.1);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.mastheadInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.mark {
+  width: 4px;
+  height: 2.2rem;
+  background: var(--mark);
+  display: inline-block;
+}
+
+.wordmarkText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.wordmarkLede {
+  font-family: var(--ff-ui);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  font-weight: var(--fw-medium);
+}
+
+.wordmarkTitle {
+  font-family: var(--ff-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  letter-spacing: -0.01em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.navLink {
+  font-family: var(--ff-ui);
+  font-size: var(--fs-ui);
+  color: var(--text-muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+.navLink:hover {
+  color: var(--text-primary);
+}
+.navLinkActive {
+  color: var(--text-primary);
+  border-bottom-color: var(--mark);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+}
+
+/* ---- Footer ------------------------------------------------------------ */
+.footer {
+  border-top: var(--hairline) solid var(--border-hairline);
+  margin-top: var(--space-9);
+}
+
+.footerInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-5);
+}
+
+.footerNote {
+  max-width: 60ch;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  line-height: var(--lh-caption);
+}
+
+@media (max-width: 720px) {
+  .wordmarkLede {
+    display: none;
+  }
+  .mastheadInner {
+    padding: var(--space-3) var(--space-4);
+  }
+  .nav {
+    gap: var(--space-3);
+  }
+}

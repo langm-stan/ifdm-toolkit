@@ -1,0 +1,97 @@
+.grid {
+  stroke: var(--chart-grid);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.axisLine {
+  stroke: var(--chart-axis);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.tickLabel {
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  fill: var(--text-faint);
+}
+
+.leader {
+  stroke-width: 1;
+}
+.annLabel {
+  font-family: var(--ff-ui);
+  font-size: 12px;
+  font-weight: 500;
+}
+.annDot {
+  stroke: var(--surface);
+  stroke-width: 1.5;
+}
+
+.annInk .leader {
+  stroke: var(--text-faint);
+}
+.annInk .annLabel {
+  fill: var(--text-primary);
+}
+.annInk .annDot {
+  fill: var(--text-primary);
+}
+
+.annMark .leader {
+  stroke: var(--mark);
+}
+.annMark .annLabel {
+  fill: var(--mark);
+}
+.annMark .annDot {
+  fill: var(--mark);
+}
+
+.annAccent .leader {
+  stroke: var(--accent);
+}
+.annAccent .annLabel {
+  fill: var(--accent);
+}
+.annAccent .annDot {
+  fill: var(--accent);
+}
+
+.markerLine {
+  stroke: var(--text-faint);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.markerLabel {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  fill: var(--text-muted);
+}
+
+.endLabel {
+  font-family: var(--ff-ui);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.drawIn {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw var(--dur-draw) var(--ease-out) forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawIn {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,0 +1,141 @@
+.page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-5) 0;
+}
+
+.hero {
+  max-width: 62ch;
+  margin-bottom: var(--space-8);
+}
+
+.eyebrow {
+  font-size: var(--fs-ui);
+  font-weight: var(--fw-semibold);
+  color: var(--c-cardinal);
+  margin-bottom: var(--space-3);
+}
+
+.headline {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-semibold);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  max-width: 20ch;
+  margin-bottom: var(--space-4);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.tools {
+  margin-bottom: var(--space-8);
+}
+
+.toolsHeading {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-5);
+}
+
+.toolList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.toolCard {
+  display: flex;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  background: var(--surface-raised);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: var(--hairline) solid var(--border-hairline);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-fast) var(--ease-standard);
+}
+a.toolCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-popover);
+}
+
+.toolNum {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: var(--c-cardinal-wash);
+  color: var(--c-cardinal);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-lead);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.toolHead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.toolTitle {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+}
+
+.toolLecture {
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+  background: var(--surface-sunken);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.toolBlurb {
+  font-size: var(--fs-ui);
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 64ch;
+}
+
+.toolCta {
+  font-size: var(--fs-ui);
+  font-weight: var(--fw-medium);
+  color: var(--accent);
+  margin-top: var(--space-1);
+}
+
+.toolSoon {
+  font-size: var(--fs-ui);
+  color: var(--text-faint);
+  margin-top: var(--space-1);
+}
+
+.toolPlanned {
+  opacity: 0.72;
+}
+
+@media (max-width: 600px) {
+  .toolCard {
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+  .headline {
+    font-size: var(--fs-h2);
+  }
+}

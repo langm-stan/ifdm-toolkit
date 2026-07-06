@@ -1,0 +1,38 @@
+.crosshair {
+  stroke: var(--text-faint);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.cursorDot {
+  fill: var(--surface);
+  stroke: var(--c-series-1);
+  stroke-width: 2;
+}
+
+.readout {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-family: var(--ff-ui);
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.readoutYear {
+  color: var(--text-faint);
+  font-family: var(--ff-mono);
+}
+
+.readoutVal {
+  font-size: var(--fs-ui);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+}
+
+.readoutSplit em {
+  font-style: normal;
+  font-family: var(--ff-mono);
+  font-weight: var(--fw-medium);
+}
