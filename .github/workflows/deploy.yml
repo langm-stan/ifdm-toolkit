@@ -1,13 +1,17 @@
 name: Deploy to GitHub Pages
 
-# Builds the site and publishes it to GitHub Pages on every push to main.
-# Requires Settings → Pages → Source = "GitHub Actions" (public repo, or a plan
-# that allows private Pages).
+# Publishes the built site to GitHub Pages.
+#
+# GitHub Pages requires the repository to be PUBLIC (or a paid plan for private
+# Pages). This runs on manual trigger only so it doesn't fail on every push
+# while the repo is private. To enable automatic deploys: make the repo public,
+# set Settings → Pages → Source = "GitHub Actions", and uncomment the `push`
+# trigger below.
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+  # push:
+  #   branches: [main]
 
 permissions:
   contents: read
