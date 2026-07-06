@@ -1,56 +1,84 @@
 # The Financial Decision-Making Toolkit
 
-A platform of interactive, classroom-ready tools for teaching personal finance —
-built in the spirit of Stanford's [Initiative for Financial Decision-Making](https://ifdm.stanford.edu/resourcehub)
-and designed to be used, adapted, and embedded by instructors.
+Interactive, classroom-ready tools for teaching personal finance — built in the
+spirit of Stanford's [Initiative for Financial Decision-Making](https://ifdm.stanford.edu/resourcehub)
+and designed for instructors to use, adapt, and embed.
 
-The first tool is a deep **Compound Interest** explorer. Time Value of Money and
-Budgeting are designed to follow on the same foundation.
+Three tools, all built on one shared, unit-tested finance engine:
 
-## Design principles
+1. **Compound interest** — watch money grow, see how much of the result is
+   interest earning interest, and read the formula with real numbers filled in.
+2. **Time value of money** — guided loan and savings-goal scenarios, plus a
+   **traditional five-key calculator** (N, I/Y, PV, PMT, FV) that solves for any
+   value using the standard cash-flow sign convention.
+3. **Budgeting & balance sheet** — an editable monthly budget and balance sheet,
+   then a projection of what your leftover money could become if invested.
 
-- **Every figure is provably correct.** A pure, unit-tested finance engine
-  (`src/lib/finance`) underpins every tool and the AI explanations. Nothing is
-  computed in a component.
-- **It should not look generated.** An editorial, ink-on-warm-paper design
-  system (`src/design-system`) with Source Serif 4 / IBM Plex, bespoke SVG
-  charts, marginalia, and a restrained motion budget — built from design tokens,
-  not framework defaults.
-- **Distributable.** Each tool serializes its full state to the URL and supports
-  an `?embed=1` mode for dropping into a course page or LMS.
+## Getting it up and running
 
-## Run it
+You need [Node.js](https://nodejs.org) 18+ (includes `npm`).
 
 ```bash
-npm install
-npm run dev      # http://localhost:5173
-npm test         # the finance engine + state round-trip suite
-npm run build    # type-check + production build
+git clone https://github.com/langm-stan/ifdm-toolkit.git
+cd ifdm-toolkit
+npm install        # install dependencies (first time only)
+npm run dev        # start the dev server → http://localhost:5173
 ```
 
-## Structure
+Open the printed URL in a browser. That's it — the whole app runs in the
+browser with no backend or API keys.
+
+Other commands:
+
+```bash
+npm test           # run the finance-engine unit tests (34 tests)
+npm run build      # type-check + production build into dist/
+npm run preview    # serve the production build locally
+```
+
+## Features
+
+- **Light / dark mode** and a **presentation size** toggle (100 / 125 / 150%) in
+  the top bar — for projecting in a lecture.
+- **Expandable charts** — hover any chart and click the expand icon for a
+  full-screen view with the headline numbers.
+- **Shareable scenarios** — the Compound Interest and TVM tools encode their
+  full state in the URL, so you can link students to an exact example.
+- **Embed mode** — add `?embed=1` to any tool's URL to strip the site chrome and
+  drop a single tool into a course page or LMS via an iframe.
+
+## Project structure
 
 ```
 src/
-  lib/finance/      Pure, tested math engine (FV/PV, EAR, annuities, amortization, growth bands)
+  lib/finance/      Pure, unit-tested math engine (FV/PV, EAR, annuities,
+                    amortization, growth-band decomposition, 5-key TVM solver)
   lib/format.ts     All currency / percent / tabular number formatting
-  lib/ai/           Streaming hook for the AI "Explain" feature
-  design-system/    Editorial primitives + bespoke SVG chart layer (tokens-driven)
+  design-system/    Tokens-driven UI primitives + bespoke SVG chart layer
   routes/
-    LandingPage/    Platform masthead + tool index
-    tools/CompoundInterest/   The flagship tool (Growth · Math · Frequency · Compare)
-  styles/           Design tokens + base typography
-supabase/functions/explain/   AI proxy (keeps the Anthropic key server-side)
+    LandingPage/            Tool index
+    tools/CompoundInterest/ Growth · Breakdown · Math · Experiment · Frequency
+    tools/Tvm/              Borrow · Save · five-key Calculator
+    tools/Budgeting/        Budget · Balance sheet · Goal projection
+  styles/           Design tokens (light + dark) + base typography
 ```
 
-## The AI "Explain" feature
+## Deployment
 
-Optional and built last so the toolkit runs fully without it. The explanation is
-grounded: the model receives only figures the engine already computed and is
-instructed to interpret, never recompute. Setup (a Supabase Edge Function under
-your own account) is documented in [`supabase/README.md`](supabase/README.md).
+The app is a static site (no server), so it can be hosted anywhere. Two easy
+paths:
+
+- **Vercel / Netlify** — import the repo, framework preset "Vite". A
+  [`vercel.json`](vercel.json) is included so client-side routes resolve
+  correctly. Works with private repos on the free tier.
+- **GitHub Pages** — a workflow at
+  [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and
+  publishes on every push to `main`. Enable it under **Settings → Pages →
+  Source: GitHub Actions**. Note: GitHub Pages requires the repository to be
+  **public** (or a paid plan for private Pages).
 
 ## Tech
 
-Vite · React · TypeScript · Vitest · KaTeX · d3-scale/d3-shape · CSS Modules.
-No charting library and no UI framework — the look is intentionally bespoke.
+Vite · React · TypeScript · React Router · Vitest · KaTeX · d3-scale / d3-shape ·
+CSS Modules. No charting library and no UI framework — the interface is
+intentionally bespoke.
