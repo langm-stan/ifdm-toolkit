@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Moved: Personal Finance Teaching Toolkit</title>
+    <!--
+      This site moved into the Personal Finance Teaching Toolkit on the
+      Stanford IFDM Resource Hub. The script below forwards each old tool
+      URL to its new home, keeping any query string. The meta refresh and
+      visible link cover visitors without JavaScript.
+    -->
+    <script>
+      ;(function () {
+        var NEW_SITE = 'https://langm-stan.github.io/ResourceHub/'
+        var MAP = {
+          '/tools/compound-interest': '#/teacher-training/compound-interest',
+          '/tools/tvm': '#/teacher-training/tvm-calculator',
+          '/tools/budgeting': '#/teacher-training/budget',
+        }
+        var path = location.pathname.replace(/^\/ifdm-toolkit/, '').replace(/\/+$/, '') || '/'
+        var target = MAP[path] || '#/teacher-training'
+        // The new site routes with a HashRouter, so any query string must sit
+        // inside the hash to reach the app.
+        var search = location.search || ''
+        location.replace(NEW_SITE + target + search)
+      })()
+    </script>
+    <meta http-equiv="refresh" content="1; url=https://langm-stan.github.io/ResourceHub/#/teacher-training" />
+  </head>
+  <body style="font-family: system-ui, sans-serif; margin: 3rem auto; max-width: 36rem; padding: 0 1rem;">
+    <h1 style="font-size: 1.3rem;">This toolkit has moved</h1>
+    <p>
+      The Financial Decision-Making Toolkit is now part of the
+      <a href="https://langm-stan.github.io/ResourceHub/#/teacher-training">Personal Finance Teaching Toolkit</a>
+      from the Stanford Initiative for Financial Decision-Making. You are being redirected.
+    </p>
+  </body>
+</html>

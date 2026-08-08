@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
-# Builds the site and publishes it to GitHub Pages on every push to main.
-# (Pages source must be "GitHub Actions"; the repo must be public or on a plan
-# that allows private Pages.)
+# The toolkit moved into the Personal Finance Teaching Toolkit on the
+# Resource Hub (langm-stan/ResourceHub). This site now publishes only a
+# static redirect page (site/) that forwards every old URL to its new home.
+# The app source remains in the repo for history but is no longer built.
 
 on:
   push:
@@ -23,24 +24,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-        env:
-          # Served from https://<user>.github.io/ifdm-toolkit/
-          VITE_BASE: /ifdm-toolkit/
-      # SPA fallback: serve index.html for deep links like /tools/tvm
-      - run: cp dist/index.html dist/404.html
+      # 404.html is a copy of index.html so deep links like /tools/tvm,
+      # which GitHub Pages serves as 404s, also redirect.
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
   deploy:
-    needs: build
     runs-on: ubuntu-latest
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
